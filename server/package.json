@@ -1,0 +1,16 @@
+{
+  "name": "menu-chatbot-server",
+  "version": "1.0.0",
+  "description": "오메추(오늘의 메뉴 추천) 챗봇 백엔드 - Google AI Studio(Gemini API) 연동",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

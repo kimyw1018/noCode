@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>오메추 - 오늘의 메뉴 추천 챗봇</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-emoji">🍽️</span>
+        <div>
+          <h1>오메추</h1>
+          <p>오늘의 메뉴, 추천해드려요</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="randomBtn" class="icon-btn" title="랜덤 메뉴 룰렛">🎲 랜덤 추천</button>
+        <button id="favBtn" class="icon-btn" title="즐겨찾기 보기">⭐ 즐겨찾기 <span id="favCount" class="badge">0</span></button>
+        <button id="settingsBtn" class="icon-btn" title="서버 설정">⚙️</button>
+      </div>
+    </header>
+
+    <main class="chat-area" id="chatArea">
+      <div class="message bot">
+        <div class="bubble">
+          안녕하세요! 저는 메뉴 추천 챗봇 <b>오메추</b>예요. 🍚<br />
+          오늘 기분, 날씨, 예산, 매운맛 선호 같은 걸 알려주시면 딱 맞는 메뉴를 추천해드릴게요.
+          예) "비 오는 날 혼밥하기 좋은 거", "매운거 땡기는데 예산 만원"
+        </div>
+      </div>
+    </main>
+
+    <form id="chatForm" class="chat-input">
+      <input id="chatInput" type="text" placeholder="오늘 뭐 먹을지 고민을 적어보세요..." autocomplete="off" />
+      <button type="submit">보내기</button>
+    </form>
+  </div>
+
+  <!-- 즐겨찾기 패널 -->
+  <aside id="favPanel" class="panel hidden">
+    <div class="panel-header">
+      <h2>⭐ 즐겨찾기한 메뉴</h2>
+      <button class="close-btn" data-close="favPanel">✕</button>
+    </div>
+    <ul id="favList" class="fav-list"></ul>
+    <p id="favEmpty" class="empty-hint">아직 즐겨찾기한 메뉴가 없어요.</p>
+  </aside>
+
+  <!-- 랜덤 룰렛 모달 -->
+  <div id="randomModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="panel-header">
+        <h2>🎲 오늘 뭐 먹지?</h2>
+        <button class="close-btn" data-close="randomModal">✕</button>
+      </div>
+      <div id="randomResult" class="random-result">버튼을 눌러 랜덤 메뉴를 뽑아보세요!</div>
+      <div class="modal-actions">
+        <button id="spinBtn" class="primary-btn">🎲 랜덤 뽑기</button>
+        <button id="favFromRandom" class="secondary-btn" disabled>⭐ 즐겨찾기 추가</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서버 설정 모달 -->
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="panel-header">
+        <h2>⚙️ 서버 설정</h2>
+        <button class="close-btn" data-close="settingsModal">✕</button>
+      </div>
+      <p class="hint">
+        이 페이지는 GitHub Pages에 올라간 정적 화면이라, 실제 추천을 받으려면
+        Gemini API를 호출하는 백엔드 서버 주소가 필요해요. (로컬 실행 시 기본값: http://localhost:3000)
+      </p>
+      <label for="backendUrlInput">백엔드 서버 주소</label>
+      <input id="backendUrlInput" type="text" placeholder="http://localhost:3000" />
+      <div class="modal-actions">
+        <button id="saveSettingsBtn" class="primary-btn">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
